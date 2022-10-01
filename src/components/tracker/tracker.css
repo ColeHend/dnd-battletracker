@@ -1,0 +1,15 @@
+.CombatControl {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: left;
+}
+.initList {
+    list-style: decimal;
+    
+}
+.itemOne {
+    list-style: none;
+    
+}
