@@ -23,4 +23,10 @@
 .App-link {
   color: #61dafb;
 }
-
+button:hover{
+  cursor: pointer;
+}
+ul li button{
+  color: white;
+  font-size: 24px;
+}

@@ -4,8 +4,6 @@ import ActualList from "../actualList/actualList";
 import "./tracker.css";
 
 function Tracker() {
-  // @ts-ignore
-
   return (
     <div className="CombatControl">
       <div className="initTrack">

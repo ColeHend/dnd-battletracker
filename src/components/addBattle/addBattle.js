@@ -8,8 +8,6 @@ function AddBattle(props) {
   let [amntVal, setAmntVal] = React.useState(0);
   let [nameVal, setNameValue] = React.useState("");
   let addInitMon = () => {
-    console.log(initVal);
-    console.log(nameVal);
     setAppInfo({
       initList: [
         ...appInfo.initList,

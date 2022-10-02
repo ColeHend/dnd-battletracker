@@ -1,15 +1,33 @@
-.CombatControl {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    text-align: left;
+@media only screen and (max-width: 600px) {
+    .CombatControl {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        text-align: left;
+    }    
+}
+@media only screen and (min-width: 601px) {
+    .CombatControl {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        text-align: left;
+    }    
 }
 .initList {
     list-style: decimal;
-    
+    min-width: 40vw;
+    border: 1px solid #fff;
 }
 .itemOne {
     list-style: none;
-    
+    text-align: center;
+}
+.addBattler{
+    height: min-content;
+    min-width: 40vw;
+    border: 1px solid #fff;
+    padding: 25px;
 }
