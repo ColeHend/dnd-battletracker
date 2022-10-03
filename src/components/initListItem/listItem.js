@@ -5,7 +5,7 @@ function ListItem(props) {
   return (
     <>
       <li
-        key={`${init} ${info.name} ${info.amount} ${info.stats.cr}`}
+        key={`${init} ${info.name} ${info.stats.ac} ${info.stats.cr}`}
         value={init}
       >
         <ItemTracked info={info} />
