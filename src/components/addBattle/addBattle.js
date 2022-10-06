@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../App";
 function AddBattle(props) {
+  //states
   // @ts-ignore
   const { appInfo, setAppInfo } = useContext(AppContext);
-  //   const { appInfo, setAppInfo } = data;
   let [initVal, setInitVal] = React.useState(0);
   let [amntVal, setAmntVal] = React.useState(1);
   let [maxHpVal, setMaxHpVal] = React.useState(0);
   let [acVal, setAcVal] = React.useState(0);
   let [nameVal, setNameValue] = React.useState("");
+  // functions
   let goodInitSort = (a, b) => {
     if (a.length > 1 && b.length > 1) {
       return b[0].init - a[0].init;
@@ -23,7 +24,7 @@ function AddBattle(props) {
   let addInitMon = () => {
     if (amntVal > 1) {
       let allMons = [];
-      for (let i = 0; i <= amntVal; i++) {
+      for (let i = 0; i < amntVal; i++) {
         const element = {
           init: initVal,
           info: {
@@ -56,6 +57,7 @@ function AddBattle(props) {
     setNameValue("");
     setAmntVal(0);
     setAcVal(0);
+    setMaxHpVal(0);
   };
   return (
     <div>

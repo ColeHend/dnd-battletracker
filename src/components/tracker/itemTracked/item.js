@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "./item.css";
 // import { AppContext } from "../../../App";
 function ItemTracked(props) {
