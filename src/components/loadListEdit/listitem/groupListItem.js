@@ -7,7 +7,7 @@ function GroupListItem(props) {
     return (
       <SingleListItem
         groupMon={true}
-        stats={{ mon, index, i, appInfo, setAppInfo }}
+        stats={{ mon, index, i, appInfo, setAppInfo, initList: props.monList }}
       />
     );
   });

@@ -1,5 +1,6 @@
 import React from "react";
 import Collapsible from "react-collapsible";
+import { AppContext } from "../../../App";
 // initVal,
 // setInitVal,
 // nameVal,
@@ -9,38 +10,68 @@ import Collapsible from "react-collapsible";
 // acVal,
 // setAcVal,
 function SingleListItem(props) {
-  let { index, appInfo, setAppInfo, mon, i } = props.stats;
+  // @ts-ignore
+  let { appInfo: appInfoTwo, setAppInfo } = React.useContext(AppContext);
+  let { appInfo, index, mon, i } = props.stats;
   let [initVal, setInitVal] = React.useState(mon.init);
   let [currHpVal, setCurrHpVal] = React.useState(mon.info.stats.currHp);
   let [maxHpVal, setMaxHpVal] = React.useState(mon.info.stats.maxHp);
   let [acVal, setAcVal] = React.useState(mon.info.stats.ac);
   let [nameVal, setNameValue] = React.useState(mon.info.name);
+  console.log("appInfo: ", appInfo, appInfoTwo);
+  let monArray = [...appInfo.initList];
+  console.log("monArray: ", monArray);
+  //   monArray.splice(i, 1);
+  let goodInitSort = (a, b) => {
+    if (a.length > 1 && b.length > 1) {
+      return b[0].init - a[0].init;
+    } else if (a.length > 1 && b.length !== Number) {
+      return b.init - a[0].init;
+    } else if (b.length > 1 && a.length !== Number) {
+      return b[0].init - a.init;
+    } else {
+      return b.init - a.init;
+    }
+  };
+  var amntIs = 1;
   let changeMon = (e, arr) => {
-    let newArr = [...appInfo.initList[index]].slice(i, i);
+    console.log("props: ", props.stats);
+    // let newArr = [...props.stats.initList]
+
     if (props.groupMon) {
-      setAppInfo({
+      if (monArray[0] !== undefined) {
+        amntIs = monArray[0].info.amount;
+      } else {
+        amntIs = props.stats.mon.info.amount;
+      }
+      //--------logs-----------
+      console.log("------group!------");
+      console.log("amntIs: ", amntIs);
+      console.log("arrParam: ", arr);
+      console.log("monArray: ", monArray);
+      console.log("realIndex: ", i);
+      console.log("propInit: ", props.stats.initList);
+      //----------------------------------------
+      props.stats.setAppInfo({
         initList: [
-          ...arr,
+          ...monArray,
           [
-            ...newArr,
             {
               init: initVal,
               info: {
                 name: nameVal,
-                amount: appInfo.initList[index].info.amount,
+                amount: amntIs,
                 stats: { maxHp: maxHpVal, currHp: currHpVal, ac: acVal },
               },
             },
-          ].slice(
-            appInfo.initList[index].info.amount,
-            appInfo.initList[index].info.amount
-          ),
-        ],
+            ...props.stats.initList, //.splice(i, 1),
+          ],
+        ].sort(goodInitSort),
       });
     } else {
-      setAppInfo({
+      props.stats.setAppInfo({
         initList: [
-          ...arr,
+          ...monArray,
           {
             init: initVal,
             info: {
@@ -49,11 +80,11 @@ function SingleListItem(props) {
               stats: { maxHp: maxHpVal, currHp: currHpVal, ac: acVal },
             },
           },
-        ],
+        ].sort(goodInitSort),
       });
     }
   };
-  let monArray = [...appInfo.monList].slice(index, index);
+
   return (
     <li>
       <Collapsible trigger={mon.info.name}>
@@ -93,7 +124,7 @@ function SingleListItem(props) {
             type="number"
             name="currHp"
             id=""
-            value={""}
+            value={currHpVal}
             onChange={(currHpNum) =>
               setCurrHpVal(Number(currHpNum.target.value))
             }
@@ -107,7 +138,9 @@ function SingleListItem(props) {
             onChange={(maxHpNum) => setMaxHpVal(Number(maxHpNum.target.value))}
           />
         </div>
-        <button onClick={(e) => changeMon(e, monArray)}>Save Change!</button>
+        <button onClick={(e) => changeMon(e, appInfo.initList)}>
+          Save Change!
+        </button>
       </Collapsible>
     </li>
   );

@@ -27,7 +27,7 @@ function ActualList() {
   const realInitList = appInfo.initList.map((creature) => {
     if (creature.length > 1) {
       return <ListGroupItem info={creature} />;
-    } else {
+    } else if (creature !== undefined) {
       return <ListItem init={creature.init} info={creature.info} />;
     }
   });

@@ -5,18 +5,7 @@ function LoadListEdit(props) {
   let { appInfo, setAppInfo } = props.info;
 
   let loadedMonList = props.monList.map((mon, index) => {
-    if (mon.length !== Number) {
-      return (
-        <SingleListItem
-          stats={{
-            index,
-            appInfo,
-            setAppInfo,
-            mon,
-          }}
-        />
-      );
-    } else {
+    if (mon.length > 1) {
       return (
         <GroupListItem
           stats={{
@@ -24,6 +13,19 @@ function LoadListEdit(props) {
             appInfo,
             setAppInfo,
             mon,
+          }}
+          monList={props.monList} //[index]
+        />
+      );
+    } else {
+      return (
+        <SingleListItem
+          stats={{
+            index,
+            appInfo,
+            setAppInfo,
+            mon,
+            initList: props.monList,
           }}
         />
       );
