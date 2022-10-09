@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./item.css";
-// import { AppContext } from "../../../App";
+import { AppContext } from "../../../App";
 function ItemTracked(props) {
-  console.log("trackedProps: ", props);
-  let info = props.info.info || props.info;
-  // const { appInfo, setAppInfo } = useContext(AppContext);
+  const { appInfo, setAppInfo } = useContext(AppContext);
+  console.log("trackedProps: ", props, appInfo, setAppInfo);
+  let info = props.info.info || props.info || appInfo.initList[0];
   console.log("item.js", info);
   const [currHp, setCurrHp] = useState(info.stats.currHp);
   let [maxHp, setMaxHp] = useState(info.stats.maxHp);

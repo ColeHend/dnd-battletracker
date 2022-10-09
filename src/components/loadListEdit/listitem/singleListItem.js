@@ -40,7 +40,11 @@ function SingleListItem(props) {
 
     if (props.groupMon) {
       if (monArray[0] !== undefined) {
-        amntIs = monArray[0].info.amount;
+        if (monArray[0].length > 1) {
+          amntIs = monArray[0][0].info.amount;
+        } else {
+          amntIs = monArray[0].info.amount;
+        }
       } else {
         amntIs = props.stats.mon.info.amount;
       }
@@ -49,38 +53,53 @@ function SingleListItem(props) {
       console.log("amntIs: ", amntIs);
       console.log("arrParam: ", arr);
       console.log("monArray: ", monArray);
-      console.log("realIndex: ", i);
+      console.log("real Indexs: ", i, index);
       console.log("propInit: ", props.stats.initList);
-      //----------------------------------------
-      props.stats.setAppInfo({
-        initList: [
-          ...monArray,
-          [
-            {
-              init: initVal,
-              info: {
-                name: nameVal,
-                amount: amntIs,
-                stats: { maxHp: maxHpVal, currHp: currHpVal, ac: acVal },
-              },
-            },
-            ...props.stats.initList, //.splice(i, 1),
-          ],
-        ].sort(goodInitSort),
+      //--------------splicing----------------------
+      console.log("arr[index]", arr);
+      let toAddArr = [arr[index], ...props.stats.initList];
+      let mayAddArr = [props.stats.initList[index], ...arr];
+      console.log("------------------------------------");
+      console.log("toAddArr B: ", toAddArr);
+      console.log("mayAddArr B: ", mayAddArr);
+      console.log("------------------------------------");
+      mayAddArr[0].splice(i, 1, {
+        init: initVal,
+        info: {
+          name: nameVal,
+          amount: amntIs,
+          stats: { maxHp: maxHpVal, currHp: currHpVal, ac: acVal },
+        },
       });
-    } else {
+      console.log("toAddArr A: ", toAddArr);
+      //---------
       props.stats.setAppInfo({
-        initList: [
-          ...monArray,
-          {
-            init: initVal,
-            info: {
-              name: nameVal,
-              amount: 1,
-              stats: { maxHp: maxHpVal, currHp: currHpVal, ac: acVal },
-            },
+        initList: [...mayAddArr].sort(goodInitSort),
+      });
+      //-------------
+    } else {
+      //--------------------------------------
+      let singleAddArr = [
+        ...arr,
+        {
+          init: initVal,
+          info: {
+            name: nameVal,
+            amount: 1,
+            stats: { maxHp: maxHpVal, currHp: currHpVal, ac: acVal },
           },
-        ].sort(goodInitSort),
+        },
+      ];
+      console.log("-----Single---------");
+      console.log("amntIs: ", amntIs);
+      console.log("monArray: ", monArray);
+      console.log("real Indexs: ", i, index);
+      console.log("arrParam: ", arr);
+      console.log("propInit: ", props.stats.initList);
+      console.log("singleAddArr: ", singleAddArr);
+      console.log("---------------------");
+      props.stats.setAppInfo({
+        initList: singleAddArr.sort(goodInitSort),
       });
     }
   };

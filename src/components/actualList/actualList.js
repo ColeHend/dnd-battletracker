@@ -25,10 +25,16 @@ function ActualList() {
     });
   };
   const realInitList = appInfo.initList.map((creature) => {
+    console.log("actual list creature: ", creature);
     if (creature.length > 1) {
+      console.log("group");
       return <ListGroupItem info={creature} />;
     } else if (creature !== undefined) {
+      console.log("single");
       return <ListItem init={creature.init} info={creature.info} />;
+    } else {
+      console.log("other");
+      return "";
     }
   });
   return (

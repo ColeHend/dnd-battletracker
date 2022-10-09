@@ -37,11 +37,11 @@ function LoadOptions(props) {
       console.log(`Parsed List:`, parsedList);
       console.log(`appInfo InitList: `, appInfo.initList);
       //--- Loads into actual list ------
-      setAppInfo({
-        initList: [...appInfo.initList, ...parsedList.initList].sort(
-          goodInitSort
-        ),
-      });
+      // setAppInfo({
+      //   initList: [...appInfo.initList, ...parsedList.initList].sort(
+      //     goodInitSort
+      //   ),
+      // });
       console.log("Done loading!1");
       //---------------------------------------------
     } else if (loadedList !== null && props.info !== undefined) {
@@ -57,11 +57,11 @@ function LoadOptions(props) {
       console.log(`Parsed List:`, parsedList);
       console.log(`Props InitList: `, props.info.initList);
       //---- loads into actual list----
-      props.setInfo({
-        initList: [...props.info.initList, ...parsedList.initList].sort(
-          goodInitSort
-        ),
-      });
+      // props.setInfo({
+      //   initList: [...props.info.initList, ...parsedList.initList].sort(
+      //     goodInitSort
+      //   ),
+      // });
       console.log("Done loading!2");
       //---------------------------------------------
     } else {
