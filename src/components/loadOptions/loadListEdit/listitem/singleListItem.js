@@ -1,6 +1,6 @@
 import React from "react";
 import Collapsible from "react-collapsible";
-import { AppContext } from "../../../App";
+import { AppContext } from "../../../../App";
 // initVal,
 // setInitVal,
 // nameVal,

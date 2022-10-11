@@ -1,12 +1,12 @@
 import React from "react";
-import ListItem from "../initListItem/listItem";
-import { AppContext } from "../../App";
-import ListGroupItem from "../listGroupItem/listGroupItem";
+import ListItem from "./initListItem/listItem";
+import { AppContext } from "../../../App";
+import ListGroupItem from "./listGroupItem/listGroupItem";
 import "./actualList.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import SaveOptions from "../saveOptions/save";
-import LoadOptions from "../loadOptions/load";
+import SaveOptions from "../../saveOptions/save";
+import LoadOptions from "../../loadOptions/load";
 function ActualList() {
   const data = React.useContext(AppContext);
   // @ts-ignore
@@ -24,14 +24,16 @@ function ActualList() {
       html: <LoadOptions setInfo={setAppInfo} info={appInfo} />,
     });
   };
-  const realInitList = appInfo.initList.map((creature) => {
+  const realInitList = appInfo.initList.map((creature, index) => {
     console.log("actual list creature: ", creature);
     if (creature.length > 1) {
       console.log("group");
-      return <ListGroupItem info={creature} />;
+      return <ListGroupItem info={creature} index={index} />;
     } else if (creature !== undefined) {
       console.log("single");
-      return <ListItem init={creature.init} info={creature.info} />;
+      return (
+        <ListItem init={creature.init} info={creature.info} index={index} />
+      );
     } else {
       console.log("other");
       return "";
@@ -46,9 +48,9 @@ function ActualList() {
         <button onClick={onLoadClick} className="loadInitList">
           Load
         </button>
-        <p className="initTitle" style={{ display: "inline" }}>
+        <span className="initTitle" style={{ display: "inline" }}>
           Initiative Order
-        </p>
+        </span>
       </p>
       {realInitList}
     </ol>

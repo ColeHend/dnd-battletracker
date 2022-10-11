@@ -1,6 +1,7 @@
 import React from "react";
 import Collapsible from "react-collapsible";
-import LoadListEdit from "../loadListEdit/loadListEdit";
+import LoadListEdit from "./loadListEdit/loadListEdit";
+import "./load.css";
 import { AppContext } from "../../App";
 function LoadOptions(props) {
   // @ts-ignore
@@ -88,13 +89,10 @@ function LoadOptions(props) {
           </div>
           <div>
             {showEdit ? (
-              <div>
-                {/* {JSON.stringify(parsedList)} */}
-                <LoadListEdit
-                  info={{ appInfo: props.info, setAppInfo: props.setInfo }}
-                  monList={[...parsedList.initList]}
-                />
-              </div>
+              <LoadListEdit
+                info={{ appInfo: props.info, setAppInfo: props.setInfo }}
+                monList={[...parsedList.initList]}
+              />
             ) : (
               `Load something to the list!`
             )}

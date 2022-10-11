@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import "./item.css";
-import { AppContext } from "../../../App";
+import { AppContext } from "../../../../App";
 function ItemTracked(props) {
+  // @ts-ignore
   const { appInfo, setAppInfo } = useContext(AppContext);
   console.log("trackedProps: ", props, appInfo, setAppInfo);
   let info = props.info.info || props.info || appInfo.initList[0];
@@ -11,6 +12,15 @@ function ItemTracked(props) {
   return (
     <>
       <div>
+        <button
+          style={{
+            color: "#f00",
+            background: "none",
+            border: "none",
+          }}
+        >
+          X
+        </button>
         {info.name}
         <div className="hpDiv">
           HP:

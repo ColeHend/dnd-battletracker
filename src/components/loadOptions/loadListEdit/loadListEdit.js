@@ -1,6 +1,7 @@
 import React from "react";
 import GroupListItem from "./listitem/groupListItem";
 import SingleListItem from "./listitem/singleListItem";
+import "./loadListEdt.css";
 function LoadListEdit(props) {
   let { appInfo, setAppInfo } = props.info;
 
@@ -33,11 +34,11 @@ function LoadListEdit(props) {
   });
 
   return (
-    <ol id="initList" className="initList">
+    <ol id="initListEdit" className="initListEdit">
       <p className="itemOne">
-        <p className="initTitle" style={{ display: "inline" }}>
-          Initiative Order
-        </p>
+        <span className="initTitle" style={{ display: "inline" }}>
+          Loaded Initiative List
+        </span>
       </p>
       {loadedMonList}
     </ol>

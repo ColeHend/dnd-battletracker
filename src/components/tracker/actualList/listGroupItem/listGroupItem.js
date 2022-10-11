@@ -3,7 +3,7 @@ import Collapsible from "react-collapsible";
 import ListItem from "../initListItem/listItem";
 function ListGroupItem(props) {
   let { info } = props;
-  console.log(props);
+  console.log("---------------ListGroupItem: ", props);
   let groupList = info.map((creatur) => (
     <ListItem init={creatur.init} info={creatur.info} />
   ));

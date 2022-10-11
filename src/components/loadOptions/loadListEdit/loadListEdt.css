@@ -1,0 +1,7 @@
+.initListEdit{
+    /* display: inline; */
+    list-style: none;
+}
+li input[type=number] {
+    width: 64px;
+}
