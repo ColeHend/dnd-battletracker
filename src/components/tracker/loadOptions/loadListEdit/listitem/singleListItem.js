@@ -1,14 +1,6 @@
 import React from "react";
 import Collapsible from "react-collapsible";
-import { AppContext } from "../../../../App";
-// initVal,
-// setInitVal,
-// nameVal,
-// setNameValue,
-// maxHpVal,
-// setMaxHpVal,
-// acVal,
-// setAcVal,
+import { AppContext } from "../../../../../App";
 function SingleListItem(props) {
   // @ts-ignore
   let { appInfo: appInfoTwo } = React.useContext(AppContext);
@@ -18,10 +10,7 @@ function SingleListItem(props) {
   let [maxHpVal, setMaxHpVal] = React.useState(mon.info.stats.maxHp);
   let [acVal, setAcVal] = React.useState(mon.info.stats.ac);
   let [nameVal, setNameValue] = React.useState(mon.info.name);
-  console.log("appInfo: ", appInfo, appInfoTwo);
   let monArray = [...appInfo.initList];
-  console.log("monArray: ", monArray);
-  //   monArray.splice(i, 1);
   let goodInitSort = (a, b) => {
     if (a.length > 1 && b.length > 1) {
       return b[0].init - a[0].init;
@@ -49,21 +38,20 @@ function SingleListItem(props) {
         amntIs = props.stats.mon.info.amount;
       }
       //--------logs-----------
-      console.log("------group!------");
+      console.log("--------------group!----------------");
       console.log("amntIs: ", amntIs);
       console.log("arrParam: ", arr);
       console.log("monArray: ", monArray);
       console.log("real Indexs: ", i, index);
       console.log("propInit: ", props.stats.initList);
-      //--------------splicing----------------------
+      console.log("--------------splicing----------");
       console.log("arr[index]", arr);
-      let toAddArr = [arr[index], ...props.stats.initList];
+      let toAddArr = [arr, props.stats.initList, monArray];
       let mayAddArr = [props.stats.initList[index], ...arr];
-      console.log("------------------------------------");
       console.log("toAddArr B: ", toAddArr);
       console.log("mayAddArr B: ", mayAddArr);
-      console.log("------------------------------------");
-      mayAddArr[0].splice(i, 1, {
+      console.log("---------------------------------");
+      mayAddArr[index].splice(i, 1, {
         init: initVal,
         info: {
           name: nameVal,
@@ -71,7 +59,8 @@ function SingleListItem(props) {
           stats: { maxHp: maxHpVal, currHp: currHpVal, ac: acVal },
         },
       });
-      console.log("toAddArr A: ", toAddArr);
+      console.log("mayAddArr A: ", mayAddArr);
+      console.log("------------------------------------");
       //---------
       props.stats.setAppInfo({
         initList: [...mayAddArr].sort(goodInitSort),
@@ -97,10 +86,11 @@ function SingleListItem(props) {
       console.log("arrParam: ", arr);
       console.log("propInit: ", props.stats.initList);
       console.log("singleAddArr: ", singleAddArr);
-      console.log("---------------------");
+      console.log("appInfo: ", appInfo, appInfoTwo);
       props.stats.setAppInfo({
         initList: singleAddArr.sort(goodInitSort),
       });
+      console.log("---------------------");
     }
   };
 
