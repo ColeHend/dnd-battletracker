@@ -4,23 +4,39 @@ import { AppContext } from "../../../../../App";
 function ItemTracked(props) {
   // @ts-ignore
   const { appInfo, setAppInfo } = useContext(AppContext);
-  console.log("trackedProps: ", props, appInfo, setAppInfo);
-  let info = props.info.info || props.info || appInfo.initList[0];
-  console.log("item.js", info);
+  let info = props.info.info || props.info;
   const [currHp, setCurrHp] = useState(info.stats.currHp);
   let [maxHp, setMaxHp] = useState(info.stats.maxHp);
+  //---deletes item----------
+  const removeItem = () => {
+    let newList = [...appInfo.initList];
+    if (props.twoIndex !== undefined) {
+      newList[props.twoIndex[0]].splice(props.twoIndex[1], 1);
+    } else {
+      newList.splice(props.index, 1);
+    }
+    setAppInfo({ initList: [...newList] });
+  };
+  //------------------------
   return (
     <>
       <div>
-        <button
-          style={{
-            color: "#f00",
-            background: "none",
-            border: "none",
-          }}
-        >
-          X
-        </button>
+        {props.index !== undefined ||
+        (props.twoIndex !== undefined &&
+          appInfo.initList[props.twoIndex[0]].length > 1) ? (
+          <button
+            style={{
+              color: "#f00",
+              background: "none",
+              border: "none",
+            }}
+            onClick={removeItem}
+          >
+            X
+          </button>
+        ) : (
+          ""
+        )}
         {info.name}
         <div className="hpDiv">
           HP:

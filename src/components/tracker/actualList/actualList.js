@@ -26,7 +26,7 @@ function ActualList() {
   };
   const realInitList = appInfo.initList.map((creature, index) => {
     console.log("actual list creature: ", creature);
-    if (creature.length > 1) {
+    if (creature.length !== undefined) {
       console.log("group");
       return <ListGroupItem info={creature} index={index} />;
     } else if (creature !== undefined) {
