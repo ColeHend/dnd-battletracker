@@ -1,5 +1,5 @@
 import React from "react";
-import AddBattle from "../addBattle/addBattle";
+import AddBattle from "./addBattle/addBattle";
 import ActualList from "./actualList/actualList";
 import "./tracker.css";
 

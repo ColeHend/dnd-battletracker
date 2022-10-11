@@ -2,25 +2,24 @@ import React from "react";
 import Collapsible from "react-collapsible";
 import LoadListEdit from "./loadListEdit/loadListEdit";
 import "./load.css";
-import { AppContext } from "../../App";
+import { AppContext } from "../../../../../App";
 function LoadOptions(props) {
   // @ts-ignore
   const { appInfo, setAppInfo } = React.useContext(AppContext);
   let [localListName, setLocalListName] = React.useState("");
   let [showEdit, setShowEdit] = React.useState(false);
   let [parsedList, setParsedList] = React.useState({ initList: [] });
-  let totalInitList = props.info.initList || appInfo.initList;
-  let goodInitSort = (a, b) => {
-    if (a.length > 1 && b.length > 1) {
-      return b[0].init - a[0].init;
-    } else if (a.length > 1 && b.length !== Number) {
-      return b.init - a[0].init;
-    } else if (b.length > 1 && a.length !== Number) {
-      return b[0].init - a.init;
-    } else {
-      return b.init - a.init;
-    }
-  };
+  // let goodInitSort = (a, b) => {
+  //   if (a.length > 1 && b.length > 1) {
+  //     return b[0].init - a[0].init;
+  //   } else if (a.length > 1 && b.length !== Number) {
+  //     return b.init - a[0].init;
+  //   } else if (b.length > 1 && a.length !== Number) {
+  //     return b[0].init - a.init;
+  //   } else {
+  //     return b.init - a.init;
+  //   }
+  // };
   let daList = { set: false };
   let loadLocalStore = () => {
     console.log("starting loading...");

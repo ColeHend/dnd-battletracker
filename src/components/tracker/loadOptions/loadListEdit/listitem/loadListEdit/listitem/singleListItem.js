@@ -1,6 +1,6 @@
 import React from "react";
 import Collapsible from "react-collapsible";
-import { AppContext } from "../../../../App";
+import { AppContext } from "../../../../../../../App";
 // initVal,
 // setInitVal,
 // nameVal,
@@ -11,7 +11,7 @@ import { AppContext } from "../../../../App";
 // setAcVal,
 function SingleListItem(props) {
   // @ts-ignore
-  let { appInfo: appInfoTwo, setAppInfo } = React.useContext(AppContext);
+  let { appInfo: appInfoTwo } = React.useContext(AppContext);
   let { appInfo, index, mon, i } = props.stats;
   let [initVal, setInitVal] = React.useState(mon.init);
   let [currHpVal, setCurrHpVal] = React.useState(mon.info.stats.currHp);

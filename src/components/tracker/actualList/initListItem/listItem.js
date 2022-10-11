@@ -1,5 +1,5 @@
 import React from "react";
-import ItemTracked from "../itemTracked/item";
+import ItemTracked from "./itemTracked/item";
 //${init} ${info.name} ${info.stats.ac} ${info.stats.cr}
 function ListItem(props) {
   let { init, info } = props;

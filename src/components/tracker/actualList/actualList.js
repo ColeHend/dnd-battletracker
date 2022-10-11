@@ -5,8 +5,8 @@ import ListGroupItem from "./listGroupItem/listGroupItem";
 import "./actualList.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import SaveOptions from "../../saveOptions/save";
-import LoadOptions from "../../loadOptions/load";
+import SaveOptions from "../saveOptions/save";
+import LoadOptions from "../loadOptions/loadListEdit/listitem/load";
 function ActualList() {
   const data = React.useContext(AppContext);
   // @ts-ignore
